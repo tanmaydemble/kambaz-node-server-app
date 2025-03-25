@@ -1,6 +1,6 @@
 import * as dao from "./dao.js";
 import * as courseDao from "../Courses/dao.js";
-import * as enrollmentsDao from "../Enrollments/dao.js";
+import enrollmentsDao from "../Enrollments/dao.js";
 
 export default function UserRoutes(app) {
     const createUser = (req, res) => { };
