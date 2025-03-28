@@ -13,7 +13,12 @@ import mongoose from "mongoose";
 import "dotenv/config";
 
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kambaz"
-mongoose.connect(CONNECTION_STRING);
+// mongoose.connect(CONNECTION_STRING);
+mongoose.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log("Connected to MongoDB successfully"))
+    .catch(err => console.error("Failed to connect to MongoDB:", err));
+console.log("MongoDB Connection String:", process.env.MONGO_CONNECTION_STRING);
+
 const app = express();
 app.use(cors({
     credentials: true,
