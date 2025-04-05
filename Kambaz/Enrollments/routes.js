@@ -1,4 +1,4 @@
-import enrollmentDao from "./dao.js";
+import * as enrollmentDao from "./dao.js";
 export default function EnrollmentRoutes(app) {
     const enrollUser = async (req, res) => {
         const { userId, courseId } = req.params;

@@ -14,18 +14,19 @@ import "dotenv/config";
 
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kambaz"
 // mongoose.connect(CONNECTION_STRING);
-mongoose.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true })
+console.log(CONNECTION_STRING);
+mongoose.connect(CONNECTION_STRING)
     .then(() => console.log("Connected to MongoDB successfully"))
     .catch(err => console.error("Failed to connect to MongoDB:", err));
-console.log("MongoDB Connection String:", process.env.MONGO_CONNECTION_STRING);
+// console.log("MongoDB Connection String:", process.env.MONGO_CONNECTION_STRING);
 
 const app = express();
 app.use(cors({
     credentials: true,
-    origin: [
+    origin: ["http://localhost:5173",
+        "https://67e5f0e2920fd76cfc11d7ee--kanbaz-react-web-app.netlify.app",
         process.env.NETLIFY_URL || "https://a6--kanbaz-react-web-app.netlify.app",
-        /\.netlify\.app$/,
-        "http://localhost:5173"
+        /\.netlify\.app$/
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow OPTIONS method
     allowedHeaders: ['Content-Type', 'Authorization'], // Allow necessary headers
