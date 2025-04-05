@@ -25,7 +25,8 @@ app.use(cors({
     credentials: true,
     origin: ["http://localhost:5173",
         "https://67e5f0e2920fd76cfc11d7ee--kanbaz-react-web-app.netlify.app",
-        process.env.NETLIFY_URL || "https://a6--kanbaz-react-web-app.netlify.app",
+        process.env.NETLIFY_URL,
+        "https://a6--kanbaz-react-web-app.netlify.app",
         /\.netlify\.app$/
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow OPTIONS method
