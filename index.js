@@ -15,7 +15,7 @@ import QuizAttemptRoutes from './Kambaz/QuizAttempts/routes.js';
 import mongoose from "mongoose";
 import "dotenv/config";
 
-const CONNECTION_STRING = "mongodb://127.0.0.1:27017/kambaz" || process.env.MONGO_CONNECTION_STRING
+const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kambaz"
 
 console.log(CONNECTION_STRING);
 mongoose.connect(CONNECTION_STRING)
@@ -26,7 +26,8 @@ mongoose.connect(CONNECTION_STRING)
 const app = express();
 app.use(cors({
     credentials: true,
-    origin: ["http://localhost:5173",
+    origin: ["https://quiz--kanbaz-react-web-app.netlify.app/",
+        "http://localhost:5173",
         "https://67e5f0e2920fd76cfc11d7ee--kanbaz-react-web-app.netlify.app",
         process.env.NETLIFY_URL,
         "https://a6--kanbaz-react-web-app.netlify.app",
