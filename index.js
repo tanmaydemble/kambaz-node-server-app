@@ -9,11 +9,14 @@ import CourseRoutes from "./Kambaz/Courses/routes.js";
 import ModuleRoutes from "./Kambaz/Modules/routes.js";
 import EnrollmentRoutes from "./Kambaz/Enrollments/routes.js";
 import AssignmentRoutes from './Kambaz/Assignments/routes.js';
+import QuizRoutes from './Kambaz/Quizzes/routes.js';
+import QuestionRoutes from './Kambaz/Questions/routes.js';
+import QuizAttemptRoutes from './Kambaz/QuizAttempts/routes.js';
 import mongoose from "mongoose";
 import "dotenv/config";
 
-const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kambaz"
-// mongoose.connect(CONNECTION_STRING);
+const CONNECTION_STRING = "mongodb://127.0.0.1:27017/kambaz" || process.env.MONGO_CONNECTION_STRING
+
 console.log(CONNECTION_STRING);
 mongoose.connect(CONNECTION_STRING)
     .then(() => console.log("Connected to MongoDB successfully"))
@@ -29,8 +32,8 @@ app.use(cors({
         "https://a6--kanbaz-react-web-app.netlify.app",
         /\.netlify\.app$/
     ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow OPTIONS method
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allow necessary headers
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
 }
 ));
 const sessionOptions = {
@@ -55,4 +58,7 @@ CourseRoutes(app);
 EnrollmentRoutes(app);
 ModuleRoutes(app);
 AssignmentRoutes(app);
+QuizRoutes(app);
+QuestionRoutes(app);
+QuizAttemptRoutes(app);
 app.listen(process.env.PORT || 4000);
